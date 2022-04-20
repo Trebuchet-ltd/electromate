@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="{{ shop.locale }}" class="js{% if template == 'index' %} templateIndex{% endif %}">
 <head>
-  {% unless settings.favicon == blank %}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">{% endunless %}
-
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
@@ -219,6 +217,9 @@
   {% include 'script-files' %}
 
   {{ shop.metafields.loox["global_html_body"] }}
+
+
+
 
   </body>
 </html>
