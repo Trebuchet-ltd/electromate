@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="{{ shop.locale }}" class="js{% if template == 'index' %} templateIndex{% endif %}">
+<head>
+  {% unless settings.favicon == blank %}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">{% endunless %}
+
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+  <meta name='HandheldFriendly' content='True'>
+  <meta name='MobileOptimized' content='375'>
+  <meta http-equiv="cleartype" content="on">
+  <meta name="theme-color" content="{{ settings.main_color }}">
+  <link rel="canonical" href="{{ canonical_url }}" />
+  {% include 'css-var' %}
+
+  {%- capture seo_title -%}
+    {%- if template == 'search' and search.performed == true -%}
+      {{ 'search.general.heading' | t: count: search.results_count }}: {{ 'search.general.results_with_count' | t: terms: search.terms, count: search.results_count }}
+    {%- else -%}
+      {{ page_title }}
+    {%- endif -%}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com">
+  <link rel="preconnect dns-prefetch" href="https://v.shopify.com">
+  <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com">
+
+  {% include 'check-shop-url' %}
+
+  <link rel="preload" href="{{'header-footer.min.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{'global.min.css' | asset_url }}" as="style">
+  {% if template == 'index' %}
+  <link rel="preload" href="{{'themes.min.css' | asset_url }}" as="style" >
+  {% else %}
+  <link rel="preload" href="{{'styles.min.css' | asset_url }}" as="style">
+  {% endif %}
+  <link rel="preload" href="{{'vendor.css' | asset_url }}" as="style">
+  {%- if settings.dark_version -%}
+  <link rel="preload" href="{{'bg-dark.min.css' | asset_url }}" as="style">
+  {%- endif -%}
+
+  {% if _shop_url == _check_shop_url %}
+  <link rel="preload" href="{{'change_color.min.css' | asset_url }}" as="style" >
+  {% endif %}
+
+  {%- if settings.dark_version -%}
+  <link rel="preload" href="{{'bg-dark.min.css' | asset_url }}" as="style" >
+  {%- endif -%}
+
+  <!-- header-css-file  ================================================== -->
+
+  <link href="{{ 'vendor.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ 'header-footer.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ 'global.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+
+  {% if template == 'index' %}
+  <link href="{{ 'themes.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  {% else %}
+  <link href="{{ 'styles.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  {% endif %}
+
+  {% if settings.direction == 'RTL' %}
+    <link href="{{ 'global-rtl.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+    {% assign _rtl = true %}
+  {% else %}
+    {% assign _rtl = false %}
+  {% endif %}
+
+  {% if _shop_url == _check_shop_url %}
+  <link href="{{ 'change_color.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  {% endif %}
+
+  {%- if settings.dark_version -%}
+  <link href="{{ 'bg-dark.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  {%- endif -%}
+
+  {% include 'theme-font' %}
+
+  <script crossorigin="anonymous" async src="{{ 'lazysizes.min.js' | asset_url }}"></script>
+
+  {{ shop.metafields.loox["global_html_head"] }}
+  {% include 'arn_wl_cp_settings' %}
+  {% include 'arn_wl_cp_styles' %}
+  {% include 'arn_icons_define' %}
+
+  {{ content_for_header }}
+
+  {% if shop.metafields.arena.wl_cp_settings.general_settings.app_script == false %}
+    <script defer crossorigin="anonymous" src="{{ 'arn-wishlist-compare.js'  | asset_url }}"></script>
+  {% endif %}</head>
+
+<body data-rtl="{{ _rtl }}" class="template{{ template | split: '.' | first | camelize }} mobile-bar-{{ settings.mobile_bar }} as-{{ settings.ajax_search }} category-mode-{{ settings.catalog_mode }} {{ settings.mode_view_default }} lazy-loading-img">
+  <script crossorigin="anonymous" src="{{ 'jquery-3.5.min.js' | asset_url }}"></script>
+
+  {% if template contains 'customers' %}
+    <script crossorigin="anonymous" src="{{ 'shopify_common.js' | shopify_asset_url }}"></script>
+    <script crossorigin="anonymous" src="{{ 'bc.customerArea.js'  | asset_url }}"></script>
+  {% endif %}
+
+  {% if template == 'index' %}
+    <script crossorigin="anonymous" src="{{ 'jquery.swiper.js' | asset_url }}" defer></script>
+    <script crossorigin="anonymous" src="{{ 'muuri.min.js' | asset_url  }}" defer></script>
+  {% endif %}
+
+  <script crossorigin="anonymous" src="{{ 'bootstrap.4x.min.js' | asset_url }}" defer></script>
+  <script crossorigin="anonymous" src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
+
+  {%- liquid
+    assign _lazyload = settings.use_lazyload
+    assign _general_layout_mode = settings.general_placement
+    assign _boxed_mode_bg = settings.boxed_mode_bg
+    assign _dark_version = settings.dark_version
+    assign _fix_boxed = settings.fix_boxed
+    assign _breadcrumb_styles = settings.breadcrumb_styles
+    assign _back_to_top = settings.show_back_to_top
+    assign _cart_styles = settings.cart_styles
+    assign _show_cookie_policy = settings.show_cookie_policy
+    assign _enable_visitor_count = settings.enable_visitor_count
+    assign _show_add_to_cart_sticky = settings.show_add_to_cart_sticky
+    assign _show_discount_popup = settings.show_discount_popup
+    assign _use_color_hexcode = settings.use_color_hexcode
+    assign _auto_currency = settings.auto_currency_selector
+  -%}
+
+  {% if request.design_mode %}{% include 'arnverifycode' %}{% endif %}
+
+  <div{% if _dark_versionl %} id="dark"{% endif %} class="boxed-wrapper mode-{{ _boxed_mode_bg }}{% if _fix_boxed %} fix-boxed{% endif %}" data-cart-style="{{ _cart_styles }}" data-redirect="{{ settings.enable_redirect_checkout }}" data-ajax-cart="{{ settings.disable_ajax_cart }}">
+
+    <div class="new-loading"></div>
+
+    {% include 'auto-language' %}
+
+    {% if _shop_url == _check_shop_url %}
+      <div class="purchase-wrapper">
+        <a href="https://themeforest.net/item/electro-gadgets-digital-responsive-shopify-theme/16544295" target="_blank" class="envato-purchase-btn">
+          <img src="{{ 'purchase-icon.png' | asset_url }}" alt="purchase">
+        </a>
+        <div class="envato-purchase-popup">
+          <div class="popup-top">
+            <h2>Purchase Electro theme!</h2>
+            <p>Get 10+ ready to use outstanding layouts in one package for only $59. Lifetime updates, top seller plugins compatibility and much more.</p>
+            <a href="https://themeforest.net/item/electro-gadgets-digital-responsive-shopify-theme/16544295" target="_blank">Purchase today for $59</a>
+          </div>
+          <div class="popup-bottom">
+            <h2>Need more licenses?</h2>
+            <p>Purchase multiple licenses and get a discount!<br>The more you purchase the more you save.</p>
+            <a href="https://arenacommerce.com/" target="_blank">Contact us</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <div id="page-body" class="electro-v8 {% unless template == 'index' %}breadcrumb-{{ _breadcrumb_styles }} {% endunless %}{{ _general_layout_mode }}">
+
+      {% if _shop_url == _check_shop_url %}{% section 'preview-panel' %}{% endif %}
+
+      <div class="header-department">
+        {% if settings.announcement_bar %}{% section 'announcement-bar' %}{% endif %}
+        {% include 'header' %}
+
+        {% if template == 'index' or template contains 'collection' %}
+          {% section 'mobile-department' %}
+        {% endif %}
+      </div>
+
+      {% include 'language-modal' %}
+
+      <div id="body-content">
+        <div id="main-content">
+          <div class="main-content">{{ content_for_layout }}</div>
+        </div>
+      </div>
+
+      {% if _auto_currency != 'disable' and settings.currency_type != '3' %}{% include 'auto-currency' %}{% endif %}
+      {% if settings.newsletter_popup %}{% section 'newsletter-template' %}{% endif %}
+      {% if settings.recently_viewed %}{% section 'recently-viewed' %}{% endif %}
+      {% if settings.bottom_products %}{% section 'bottom' %}{% endif %}
+      {% if settings.logo_list %}{% section 'bottom-partner' %}{% endif %}
+      {% section 'footer' %}
+    </div>
+
+    {% if settings.mobile_bar == 'outside' %}
+      {% include 'layer-mobile-bar' %}
+    {% endif %}
+
+    {% if _cart_styles == 'dropdown' %}
+      {% include 'cart-dd-custom' %}
+      {% include 'layer-cart-modal' %}
+    {% else %}
+      {% include 'cart-sb-custom' %}
+      {% include 'cart-sidebar' %}
+    {% endif %}
+
+    {% if settings.currency_type == '2' %}{% include 'currencies' %}{% endif %}
+    {% if settings.use_quick_view %}{% include 'quick-shop-product' %}{% endif %}
+    {% if _use_color_hexcode %}{% include 'color-hexcode' %}{% endif %}
+
+    {% if _show_cookie_policy %}{% include 'cookie-policy' %}{% endif %}
+    {% if template contains 'product' %}{% include 'theme-product' %}{% endif %}
+
+  </div>
+  {% if _back_to_top %}<div id="scroll-to-top" title="Back To Top"><a href="javascript:;">{%- render 'theme-icon', type: 'back-top' -%}</a></div>{% endif %}
+  {% include 'script-files' %}
+
+  {{ shop.metafields.loox["global_html_body"] }}
+
+  </body>
+</html>
