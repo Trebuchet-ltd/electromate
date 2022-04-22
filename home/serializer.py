@@ -32,7 +32,7 @@ class ProductOrder(serializers.ModelSerializer):
     class Meta:
         models = ProductVariant
         fields = ['order_time', 'user', 'item_details', 'amount', 'cashback_amount',
-                  'business_volume', 'pincode', 'dilivary_address', 'status', 'processed_user',
+                  'business_volume', 'pincode', 'delivery_address', 'status', 'processed_user',
                   'payment_type', 'modified_date_time']
 
 
