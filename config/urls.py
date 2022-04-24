@@ -13,7 +13,7 @@ schema_view = get_schema_view(
         description="description",
 
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="sunithvs2002@gmail.com"),
+        contact=openapi.Contact(email="electromate2002@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
