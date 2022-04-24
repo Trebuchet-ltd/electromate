@@ -138,7 +138,7 @@
     <script type="text/javascript" async=""
             src="{% static 'js/trekkie.storefront.7a1e33ad1202f755768e4821a6acd8fe61f84871.min.js.download' %}"
 
-    <script crossorigin="anonymous" async="" src="./home_files/lazysizes.min.js.download"></script>
+    <script crossorigin="anonymous" async="" src="{% static 'home_files/lazysizes.min.js.download' %}"></script>
 
 
     <script type="text/javascript">
@@ -168,13 +168,13 @@
 
         var arn_product_id = 0
     </script>
-    <script src="./home_files/arn-pre-order.data.js.download" type="text/javascript"></script>
+    <script src="{% static 'home_files/arn-pre-order.data.js.download" type="text/javascript'%}"></script>
     <script>
         window.theme = window.theme || {};
         theme.moneyFormat = "Rs. {{amount}}";
     </script>
     <script async=""
-            src="./home_files/shop_events_listener-fa61fd11817b231631d2fe43dc869d0b1d14a06332792d42f1a1d94bda5aa31e.js.download"></script>
+            src="{% static 'home_files/shop_events_listener-fa61fd11817b231631d2fe43dc869d0b1d14a06332792d42f1a1d94bda5aa31e.js.download' %}"></script>
     <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
           as="script">
     {#<iframe src="./home_files/saved_resource.html" title="" loading="eager"#}
@@ -691,16 +691,17 @@ for (var attr in meta) {
 })();</script>
 
 
-<script crossorigin="anonymous" src="./home_files/jquery-3.5.min.js.download"></script>
+<script crossorigin="anonymous" src="{% static 'home_files/jquery-3.5.min.js.download' %}"></script>
 
 
-<script crossorigin="anonymous" src="./home_files/jquery.swiper.js.download" defer=""></script>
-<script crossorigin="anonymous" src="./home_files/muuri.min.js.download" defer=""></script>
+<script crossorigin="anonymous" src="{% static 'home_files/jquery.swiper.js.download' %}" defer=""></script>
+<script crossorigin="anonymous" src="{% static 'home_files/muuri.min.js.download'%}" defer=""></script>
 
 
-<script crossorigin="anonymous" src="./home_files/bootstrap.4x.min.js.download" defer=""></script>
+<script crossorigin="anonymous" src="{% static'home_files/bootstrap.4x.min.js.download' %}" defer=""></script>
 <script crossorigin="anonymous"
-        src="./home_files/api.jquery-e94e010e92e659b566dbc436fdfe5242764380e00398907a14955ba301a4749f.js.download"
+
+        src={% static 'home_files/api.jquery-e94e010e92e659b566dbc436fdfe5242764380e00398907a14955ba301a4749f.js.download'%}"
         defer=""></script>
 
 <div class="boxed-wrapper mode-image" data-cart-style="dropdown" data-redirect="false" data-ajax-cart="false">
@@ -4611,19 +4612,19 @@ for (var attr in meta) {
     </svg>
 </a></div>
 <!--[if (gt IE 9)|!(IE)]><!-->
-<script crossorigin="anonymous" src="./home_files/theme-sections.min.js.download" defer="defer"></script>
+<script crossorigin="anonymous" src="{% static 'home_files/theme-sections.min.js.download' %}" defer="defer"></script>
 <!--[if lte IE 9]>
 <script src="//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/theme-sections.min.js?v=5245451067658317120"></script>
 <![endif]-->
 
-<script crossorigin="anonymous" src="./home_files/jquery.plugin.min.js.download" defer=""></script>
+<script crossorigin="anonymous" src="{% static 'home_files/jquery.plugin.min.js.download' %}" defer=""></script>
 
 
-<script crossorigin="anonymous" src="./home_files/bc.script.js.download"></script>
+<script crossorigin="anonymous" src="{% static 'home_files/bc.script.js.download' %}"></script>
 
 
-<iframe title="Shopify Admin Bar" id="admin-bar-iframe" src="./home_files/bar.html"
-        sandbox="allow-same-origin allow-scripts"
-        style="position: fixed; bottom: 0; left: 0; z-index: 2147483647; width: 80px; height: 80px; border: none;"></iframe>
+{#<iframe title="Shopify Admin Bar" id="admin-bar-iframe" src="./home_files/bar.html"#}
+       {# sandbox="allow-same-origin allow-scripts"#}
+        {# style="position: fixed; bottom: 0; left: 0; z-index: 2147483647; width: 80px; height: 80px; border: none;"></iframe>#}
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
