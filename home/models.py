@@ -92,3 +92,16 @@ class Addresses(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.address}, {self.state}, {self.pincode} (PIN) "
+      
+class PayIn(models.Model):
+
+    transaction_id = models.IntegerField()
+    purchase_order_id = models.IntegerField()
+    paid_date_time = models.IntegerField()
+    amount = models.IntegerField()
+    type = models.CharField()
+    status = models.CharField()
+    processed_user_id = models.IntegerField()
+    payment_received_user_id = models.IntegerField()
+    cash_back_debited = models.BooleanField()
+
