@@ -1,169 +1,28 @@
 {% load static %}
 <!DOCTYPE html>
-<!-- saved from url=(0031)https://electromate.myshopify.com/ -->
+
 <html lang="en"
       class="js templateIndex js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        {% block title %}
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="375">
-    <meta http-equiv="cleartype" content="on">
-    <meta name="theme-color" content="#fed700">
-    <link rel="canonical" href="https://sunithvs.myshopify.com/">
-    <link href="{% static 'css/header-footer.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/global.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/themes.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/vendor.css' %}" rel="stylesheet"/>
+        {% endblock %}
+    </title>
+
     {% block style %}
-        <style>
-            :root {
-                --body-font-size: 14px;
-                --size-h1: 36px;
-                --size-h2: 30px;
-                --size-h3: 22px;
-                --size-h4: 20px;
-                --size-h5: 18px;
-                --size-h6: 16px;
-                --top-font-size: 13px;
-                --product-font-size: 14px;
-                --product-price-size: 20px;
-                --product-detail-title-size: 25px;
-                --nav-font-size: 14px;
-                --nav-sub-font-size: 14px;
-                --topbar-bg-color: #ffffff;
-                --main-color: #fed700;
-                --main-color-text: #333e48;
-                --header-backgound: #ffffff;
-                --text-header-color: #333e48;
-                --header-text-color-hover: #334141;
-                --bg-number-icon: #fed700;
-                --text-number-icon: #333e48;
-                --header-bg-mobile-color: #fed700;
-                --nav-link-color: #333e48;
-                --nav-link-hover-color: #333e48;
-                --nav-dropdown-background: #ffffff;
-                --nav-dropdown-link-color: #333e48;
-                --nav-dropdown-link-hover-color: #333e48;
-                --border-main-nav: #e7c300;
-                --label-sale-color: #ffffff;
-                --label-sale-bg: #4cd964;
-                --label-new-color: #ffffff;
-                --label-new-bg: #007aff;
-                --label-hot-color: #ffffff;
-                --label-hot-bg: #ff3b30;
-                --body-background-color: #ffffff;
-                --body-second-color: #f5f5f5;
-                --body-mode-color: #ffffff;
-                --body-label-sale-color: #343f49;
-                --body-label-sale-background: #fed700;
-                --body-label-new-color: #ffffff;
-                --body-label-new-background: #007aff;
-                --body-general-color: #333e48;
-                --body-light-color: #878787;
-                --body-title-color: #333e48;
-                --body-link-color: #333e48;
-                --body-border-color: #dddddd;
-                --body-ratting-empty-color: #cbcbcb;
-                --body-title-product: #0062bd;
-                --body-price-color: #343f49;
-                --body-price-sale-color: #ee0000;
-                --body-price-sold-out-color: #848484;
-                --breadcrumb-height: 230px;
-                --breadcrumb-bg-color: #ffffff;
-                --color_swatch_width: 35px;
-                --color_swatch_height: 35px;
-                --image_swatch_width: 35px;
-                --image_swatch_height: 35px;
-                --footer-background-color: #f8f8f8;
-                --footer-static-text-color: #333e48;
-                --footer-link-color: #333e48;
-                --footer-hover-color: #df3737;
-                --footer-copyright-bg: #eaeaea;
-                --footer-copyright-color: #333e48;
-                --button-btn1: #fed700;
-                --button-btn1-txt: #333e48;
-                --button-btn1-border: #fed700;
-                --button-hover-btn1: #333e48;
-                --button-hover-btn1-txt: #ffffff;
-                --button-hover-btn1-border: #333e48;
-                --button-btn2: #e6e6e6;
-                --button-btn2-txt: #333e48;
-                --button-btn2-border: #e6e6e6;
-                --button-hover-btn2: #fed700;
-                --button-hover-btn2-txt: #333e48;
-                --button-hover-btn2-border: #fed700;
-
-                --bg-language-flag: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/laguages_flag.png?v=3160017297796615329);
-                --bg-icon-select: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/bg_select.png?v=12805873933805771661);
-                --bg-loading: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/loading.gif?v=3101074088114007785);
-                --bg-image-body: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/body_bg_image.png?v=17287703429083502461);
-                --bg-meta-product: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/icon-360.png?v=1469233224437497184);
-                --bg-password: url(//cdn.shopify.com/s/files/1/0641/4689/9178/t/2/assets/password-page-background.jpg?v=4111572747541038833);
-
-                --rgba-text-header-1: rgba(51, 62, 72, 0.1);
-                --rgba-text-header-6: rgba(51, 62, 72, 0.6);
-                --rgba-text-header-8: rgba(51, 62, 72, 0.8);
-                --rgba-nav-link-color-3: rgba(51, 62, 72, 0.3);
-                --rgba-nav-link-color-6: rgba(51, 62, 72, 0.6);
-                --rgba-main-color-text-1: rgba(51, 62, 72, 0.1);
-
-                --text-or: 'or';
-
-                --black: #000000;
-                --white: #ffffff;
-                --bg-other: #bcbcbc;
-                --bg-deal-section: #e6e6e6;
-                --text-deal-text: #383838;
-                --font-bold: 600;
-
-                --bg-dark: #181818;
-                --color-dark: #d9d9d9;
-            }
-        </style>
-        <style>
-            :root {
-                --font-heading: Open Sans, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                --font-standard: Open Sans, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            }
-        </style>
-    {% endblock %}
-    {% block title %}
 
     {% endblock %}
 
-    <meta property="og:site_name" content="electromate">
-    <meta property="og:url" content="https://electromate.myshopify.com/">
-    <meta property="og:title" content="Mr">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="electromate">
-
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mr">
-    <meta name="twitter:description" content="electromate">
-
-    <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com/">
-    <link rel="preconnect dns-prefetch" href="https://v.shopify.com/">
-    <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com/">
-    {% block static %}
+    {% block style_link %}
 
     {% endblock %}
-
-
-    {#  <link rel="preload" href="./home_files/header-footer.min.css" as="style">#}
-
-
-    <link href="../../static/css/css2" rel="stylesheet" type="text/css">
-
-    {% block scripts %}
-
-    {% endblock %}
+{% block scripts %}{% endblock %}
 </head>
+
 {% block body %}
 
 {% endblock %}
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
 </html>
